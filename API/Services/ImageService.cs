@@ -31,7 +31,7 @@ public interface IImageService
     /// <param name="encodeFormat">Convert and save as encoding format</param>
     /// <param name="thumbnailWidth">Width of thumbnail</param>
     /// <returns>File name with extension of the file. This will always write to <see cref="DirectoryService.CoverImageDirectory"/></returns>
-    string CreateThumbnailFromBase64(string encodedImage, string fileName, EncodeFormat encodeFormat, int thumbnailWidth = 320);
+    string CreateThumbnailFromBase64(string encodedImage, string fileName, EncodeFormat encodeFormat, int thumbnailWidth = 1320);
     /// <summary>
     /// Writes out a thumbnail by stream input
     /// </summary>
@@ -77,11 +77,11 @@ public class ImageService : IImageService
     /// <summary>
     /// Width of the Thumbnail generation
     /// </summary>
-    private const int ThumbnailWidth = 320;
+    private const int ThumbnailWidth = 1320;
     /// <summary>
     /// Height of the Thumbnail generation
     /// </summary>
-    private const int ThumbnailHeight = 455;
+    private const int ThumbnailHeight = 1876;
     /// <summary>
     /// Width of a cover for Library
     /// </summary>
@@ -422,7 +422,7 @@ public class ImageService : IImageService
 
     public static string CreateMergedImage(IList<string> coverImages, string dest)
     {
-        var image = Image.Black(ThumbnailWidth, ThumbnailHeight); // 320x455
+        var image = Image.Black(ThumbnailWidth, ThumbnailHeight); // 1320x1876
 
         var thumbnailWidth = image.Width / 2;
         var thumbnailHeight = image.Height / 2;

@@ -171,7 +171,7 @@ public class ArchiveServiceTests
         var archiveService =  Substitute.For<ArchiveService>(_logger, ds, imageService, Substitute.For<IMediaErrorService>());
 
         var testDirectory = Path.GetFullPath(Path.Join(Directory.GetCurrentDirectory(), "../../../Services/Test Data/ArchiveService/CoverImages"));
-        var expectedBytes = Image.Thumbnail(Path.Join(testDirectory, expectedOutputFile), 320).WriteToBuffer(".png");
+        var expectedBytes = Image.Thumbnail(Path.Join(testDirectory, expectedOutputFile), 1320).WriteToBuffer(".png");
 
         archiveService.Configure().CanOpen(Path.Join(testDirectory, inputFile)).Returns(ArchiveLibrary.Default);
 

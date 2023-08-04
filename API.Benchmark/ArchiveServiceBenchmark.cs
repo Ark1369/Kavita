@@ -68,7 +68,7 @@ public class ArchiveServiceBenchmark
 
         using var stream = new FileStream(SourceImage, FileMode.Open);
         using var thumbnail2 = SixLabors.ImageSharp.Image.Load(stream);
-        thumbnail2.Mutate(x => x.Resize(320, 0));
+        thumbnail2.Mutate(x => x.Resize(1320, 0));
         thumbnail2.Save(_directoryService.FileSystem.Path.Join(outputDirectory, "imagesharp.png"), _pngEncoder);
     }
 
@@ -80,7 +80,7 @@ public class ArchiveServiceBenchmark
 
         using var stream = new FileStream(SourceImage, FileMode.Open);
         using var thumbnail2 = SixLabors.ImageSharp.Image.Load(stream);
-        thumbnail2.Mutate(x => x.Resize(320, 0));
+        thumbnail2.Mutate(x => x.Resize(1320, 0));
         thumbnail2.Save(_directoryService.FileSystem.Path.Join(outputDirectory, "imagesharp.webp"), _webPEncoder);
     }
 
@@ -91,7 +91,7 @@ public class ArchiveServiceBenchmark
         _directoryService.ExistOrCreate(outputDirectory);
 
         using var stream = new FileStream(SourceImage, FileMode.Open);
-        using var thumbnail = NetVips.Image.ThumbnailStream(stream, 320);
+        using var thumbnail = NetVips.Image.ThumbnailStream(stream, 1320);
         thumbnail.WriteToFile(_directoryService.FileSystem.Path.Join(outputDirectory, "netvips.png"));
     }
 
@@ -102,7 +102,7 @@ public class ArchiveServiceBenchmark
         _directoryService.ExistOrCreate(outputDirectory);
 
         using var stream = new FileStream(SourceImage, FileMode.Open);
-        using var thumbnail = NetVips.Image.ThumbnailStream(stream, 320);
+        using var thumbnail = NetVips.Image.ThumbnailStream(stream, 1320);
         thumbnail.WriteToFile(_directoryService.FileSystem.Path.Join(outputDirectory, "netvips.webp"));
     }
 
